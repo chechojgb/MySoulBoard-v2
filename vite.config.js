@@ -10,6 +10,6 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        require('flowbite/plugin')
+        // require('flowbite/plugin')
     ],
 });
