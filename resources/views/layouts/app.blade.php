@@ -19,13 +19,30 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
+    </head>
+    <body x-data="{ darkMode: false }" 
+     x-bind:class="{'dark': darkMode === true}" 
+     x-init="
+       if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+         localStorage.setItem('darkMode', JSON.stringify(true));
+       }
+       darkMode = JSON.parse(localStorage.getItem('darkMode'));
+       $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))
+     " 
+     x-cloak
+     class="transition-colors duration-500 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900" x-data="{ sidebarOpen: false, sidebarPinned: false }">
+         <x-dark.buttonChange/>
+         <x-header/>
+         <x-navbar></x-navbar>
             <main>
                 {{ $slot}}
             </main>
-        </div>
-        {{ $slot }}
+    </div>
+       
     </body>
 
 </html>
