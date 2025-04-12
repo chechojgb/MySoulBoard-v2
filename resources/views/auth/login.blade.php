@@ -2,43 +2,46 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" class="relative" action="{{ route('login')}}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="relative w-full mb-6">
-            <input type="email" id="email" class="peer w-full p-3  bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-700 focus:border-blue-200 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-transparent" placeholder="" required>
-            <img src="{{asset('icons/user.svg')}}" alt="user icon" class="absolute transform -translate-y-1/2 top-1/2 right-4 pr-2 prw-5 h-5  transition-all duration-200 
-            peer-focus:opacity-100 peer-focus:brightness-0 peer-focus:invert peer-valid:opacity-100 peer-valid:brightness-0 peer-valid:invert">
-            <label for="email" class="peer-placeholder-shown peer-focus absolute left-3 top-3  text-gray-900 text-sm transition-all duration-200 dark:text-white 
-                peer-valid:top-1 peer-valid:text-xs peer-valid:text-blue-700 
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-700">
-                Email Addres
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
         </div>
 
-        <div class="relative w-full mb-6 mt-4">
-            <input type="password" id="password" class="peer w-full p-3  bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-700 focus:border-blue-200 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-transparent" placeholder="" required>
-            <button type="button" id="togglePassword" class="absolute right-4 top-1/4 transform -translate-y-1/3 transition-all duration-200 
-            peer-focus:opacity-100 peer-focus:brightness-0 peer-focus:invert peer-valid:opacity-100 peer-valid:brightness-0 peer-valid:invert">
-                <img src="{{ asset('icons/eye-crossed.svg') }}" id="eyeIcon" class="w-5 h-5" 
-                data-eye="{{asset('icons/eye.svg')}}"
-                data-eye-crossed="{{asset('icons/eye-crossed.svg')}}"
-                >
-            </button>
-            <label for="password" class="peer-placeholder-shown peer-focus absolute left-3 top-3  text-gray-900 text-sm transition-all duration-200 dark:text-white 
-                peer-valid:top-1 peer-valid:text-xs peer-valid:text-blue-700 
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-700">
-                Password
-            </label>
-            <h3 class="mt-2 mb-2 text-[20px] flex justify-end">Forgot Password?</h3>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+
+            <x-primary-button class="ms-3">
+                {{ __('Log in') }}
+            </x-primary-button>
         </div>
-
-        <div class="flex justify-center items-center ms-3">
-            <x-buttons.buttonCompanie>
-                {{ __('Login') }}
-            </x-buttons.buttonCompanie>
-        </div>       
-
     </form>
 </x-guest-layout>
-
