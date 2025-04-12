@@ -38,7 +38,7 @@
          <x-dark.buttonChange/>
          <x-header/>
          <x-navbar></x-navbar>
-            <main class="pt-16 pl-16 transition-all duration-300 " :class="sidebarOpen ? 'pl-72 pr-12' : 'pl-20 pr-10'">
+            <main class="pt-2 pl-16 transition-all duration-300" :class="sidebarOpen ? 'pl-72 pr-12' : 'pl-20 pr-10'">
                 {{ $slot}}
             </main>
     </div>

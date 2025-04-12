@@ -17,4 +17,5 @@ class Area extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    
 }

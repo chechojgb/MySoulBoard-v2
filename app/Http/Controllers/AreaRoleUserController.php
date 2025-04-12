@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\role_user;
+use App\Models\area_role_user;
+use App\Models\AreaRoleUser;
 use Illuminate\Http\Request;
 
-class RoleUserController extends Controller
+class AreaRoleUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class RoleUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(role_user $role_user)
+    public function show(AreaRoleUser $area_role_user)
     {
         //
     }
@@ -42,7 +43,7 @@ class RoleUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(role_user $role_user)
+    public function edit(AreaRoleUser $area_role_user)
     {
         //
     }
@@ -50,7 +51,7 @@ class RoleUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, role_user $role_user)
+    public function update(Request $request, AreaRoleUser $area_role_user)
     {
         //
     }
@@ -58,7 +59,7 @@ class RoleUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(role_user $role_user)
+    public function destroy(AreaRoleUser $area_role_user)
     {
         //
     }

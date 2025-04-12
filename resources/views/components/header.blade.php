@@ -1,5 +1,5 @@
 <header class="antialiased">
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 fixed top-0 left-0 w-full z-50">
         <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
                 <button @click="sidebarOpen = !sidebarOpen; sidebarPinned = !sidebarPinned"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use Illuminate\Http\Request;
+use PhpParser\Node\Arg;
 
 class AreaController extends Controller
 {
@@ -20,7 +21,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.areas.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+
+        $user = Area::create([
+            'name' => $request->name
+        ]);
+
+        return redirect()->back()->with('success', 'Usuario creado correctamente.');
     }
 
     /**

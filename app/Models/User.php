@@ -8,15 +8,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\AreaRoleUser;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
 
+    public function areaRoles()
+    {
+        return $this->hasMany(AreaRoleUser::class);
+    }
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'roles');
     }
 
     // Áreas a las que pertenece el usuario
@@ -25,11 +30,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Area::class);
     }
 
-    // ¿Tiene un rol específico?
-    public function hasRole(string $roleName): bool
-    {
-        return $this->roles->contains('name', $roleName);
-    }
+    // // ¿Tiene un rol específico?
+    // public function hasRole(string $roleName): bool
+    // {
+    //     return $this->roles->contains('name', $roleName);
+    // }
+
 
     /**
      * The attributes that are mass assignable.
