@@ -1,6 +1,8 @@
 <header class="antialiased">
+    
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 fixed top-0 left-0 w-full z-50">
         <div class="flex flex-wrap justify-between items-center">
+            
             <div class="flex justify-start items-center">
                 <button @click="sidebarOpen = !sidebarOpen; sidebarPinned = !sidebarPinned"
                     id="toggleSidebar"
@@ -50,6 +52,8 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                       </svg>
                 </button>
+                {{-- DARK MODE --}}
+                <x-dark.buttonChange/>
                 <!-- Notifications -->
                 <button type="button" data-dropdown-toggle="notification-dropdown" class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                     <span class="sr-only">View notifications</span>
@@ -125,10 +129,8 @@
                     </div>
                    
                 </div>
-                <!-- Apps -->
-    
-                <!-- Dropdown menu -->
 
+                
                 <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">

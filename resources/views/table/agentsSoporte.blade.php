@@ -156,7 +156,7 @@
                 stats: { queue: 0, available: 0, onCall: 0, paused: 0 },
                 agents: [],
                 fetchAgents() {
-                    fetch('/api/agents')
+                    fetch('/api/agents/soporte')
                         .then(res => res.json())
                         .then(data => {
                             console.log(
@@ -173,7 +173,7 @@
                         });
                 },
                 fetchStats() {
-                    fetch('/api/stats')
+                    fetch('/api/stats/soporte')
                         .then(res => res.json())
                         .then(data => {
                             console.log('[STATS] Contadores actualizados:', data);

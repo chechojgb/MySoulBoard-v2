@@ -35,10 +35,10 @@
      class="transition-colors duration-500 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900" x-data="{ sidebarOpen: false, sidebarPinned: false }">
-         <x-dark.buttonChange/>
+        
          <x-header/>
          <x-navbar></x-navbar>
-            <main class="pt-16 pl-16 transition-all duration-300 " :class="sidebarOpen ? 'pl-72 pr-12' : 'pl-20 pr-10'">
+            <main class="pt-16 pl-16 transition-all duration-300 " :class="sidebarOpen ? 'pl-64 pr-2' : 'pl-14 pr-2'">
                 {{ $slot}}
             </main>
     </div>
