@@ -49,6 +49,11 @@ Route::post('/areas', [AreaController::class, 'store'])->name('areas.store');
 
 Route::get('table', [TableController::class, 'index'])->name('table.agents');
 
+Route::get('table/soporte', [TableController::class, 'indexSoporte'])->name('table.agents.soporte');
+Route::get('table/tramites', [TableController::class, 'indexTramites'])->name('table.agents.tramites');
+Route::get('table/movil', [TableController::class, 'indexMovil'])->name('table.agents.movil');
+Route::get('table/retencion', [TableController::class, 'indexRetencion'])->name('table.agents.retencion');
+
 //SUPEERVISOR
 Route::middleware(['auth', 'verified', 'supervisor'])->group(function () {
     Route::get('/dashboard', function () {
